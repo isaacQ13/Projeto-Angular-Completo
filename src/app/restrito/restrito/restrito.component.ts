@@ -5,6 +5,6 @@ import { Component } from '@angular/core';
   templateUrl: './restrito.component.html',
   styleUrls: ['./restrito.component.css']
 })
-export class restritoComponent {
+export class RestritoComponent {
 
 }

@@ -1,34 +1,41 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { produto } from './models/Produto.model';
+import { Produto } from './models/Produto.model';
+
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class ProdutoService {
 
-  private url = "http://localhost:3000/produtos";
+  private url = "http://localhost:4200/produtos";
 
   constructor(private _httpClient: HttpClient) { }
-
-  getProduto(id: any): Observable<produto> {
+  
+  getProduto(id:any): Observable<Produto> {
     const urlAtualizar = `${this.url}?id=${id}`;
-    return this._httpClient.get<produto>(urlAtualizar);
+    return this._httpClient.get<Produto>(urlAtualizar);
   }
-  getProdutos(): Observable<produto[]> {
-    return this._httpClient.get<produto[]>(this.url);
+  
+  getProdutos(): Observable<Produto[]> {
+    return this._httpClient.get<Produto[]>(this.url);
   }
-  cadastrarProduto(produto: produto): Observable<produto[]> {
-    return this._httpClient.post<produto[]>(this.url, produto);
+  
+  cadastrarProduto(produto: Produto): Observable<Produto[]> {
+    return this._httpClient.post<Produto[]>(this.url, produto);
   }
-  atualizarProduto(id: any, produto: produto): Observable<produto[]> {
+  
+  atualizarProduto(id: any, produto: Produto): Observable<Produto[]> {
     const urlAtualizar = `${this.url}/${id}`;
-    return this._httpClient.put<produto[]>(urlAtualizar, produto);
+    return this._httpClient.put<Produto[]>(urlAtualizar, produto);
   }
-  removerProduto(id: any): Observable<produto[]> {
+  
+  removerProduto(id: any): Observable<Produto[]> {
     const urlDeletar = `${this.url}/${id}`;
-    return this._httpClient.delete<produto[]>(urlDeletar);
+    return this._httpClient.delete<Produto[]>(urlDeletar);
   }
-
+  
 }
+  
